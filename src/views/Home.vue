@@ -11,6 +11,7 @@
       :modules="modules"
       class="mySwiper"
       @init="onInit"
+      @slideChange="onSlideChange"
     >
       <swiper-slide><Home /></swiper-slide>
       <swiper-slide><About /></swiper-slide>
@@ -58,12 +59,18 @@ import { Mousewheel, Pagination } from 'swiper'
 const modules = [Mousewheel]
 
 const route = useRoute()
+const router = useRouter()
 const swiperIns = ref()
 const onInit = (e: any) => {
   swiperIns.value = e
 }
 
 const routes = ['home', 'about', 'feature', 'started']
+
+const onSlideChange = (e: any) => {
+  const name = routes[e.activeIndex]
+  router.push({ name })
+}
 watch(
   () => route.name,
   (v) => {
