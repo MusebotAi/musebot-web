@@ -1,0 +1,91 @@
+<script setup lang="ts"></script>
+
+<template>
+  <div class="home">
+    <img :src="$imgUrl('musebot.png')" class="title" alt="" />
+    <div class="desc">Next-Gen NFTs Engine Powered by AIGC</div>
+
+    <img :src="$imgUrl('l_lb.png')" class="lb" alt="" />
+    <img :src="$imgUrl('l_down.png')" class="ldown" alt="" />
+
+    <div class="left"></div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@function w($p) {
+  @return calc($p / 1440) * 100vw;
+}
+@function h($p) {
+  @return calc($p / 1024) * 100vh;
+}
+.left {
+  position: absolute;
+  width: 170px;
+  height: 94px;
+  left: 0px;
+  top: 309px;
+
+  background: linear-gradient(
+    101.42deg,
+    rgba(98, 191, 54, 0.88) -24.47%,
+    rgba(98, 191, 54, 0) 90.91%
+  );
+}
+.lb {
+  position: absolute;
+  width: 252px;
+  height: 70px;
+  left: 74px;
+  bottom: h(93);
+}
+.tr {
+  position: absolute;
+  width: 161px;
+  height: 66px;
+  right: 75px;
+  top: h(93);
+}
+.ldown {
+  position: absolute;
+  width: 39.93px;
+  height: 407.94px;
+  right: 57px;
+  bottom: h(93);
+}
+.home {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url(@/assets/bg_home.png);
+  background-repeat: no-repeat;
+  background-position: w(627) h(229);
+  background-size: 618px 596px;
+  // background-image: url(@/assets/l_lb.png), url(@/assets/l_tr.png),
+  //   url(@/assets/l_down.png), url(@/assets/bg_home.png);
+  // background-repeat: no-repeat;
+  // background-position: w(74) h(861), w(1205) h(93), w(1343) h(523),
+  //   w(627) h(229);
+  // background-size: w(252) h(70), w(161) h(66), w(40) h(408), 618px 596px;
+
+  .title {
+    position: absolute;
+    left: w(223);
+    top: h(281);
+    width: 618px;
+    height: 90px;
+  }
+
+  .desc {
+    position: absolute;
+    width: 642px;
+    height: 234px;
+    right: w(211);
+    top: h(512);
+    font-weight: 400;
+    font-size: 64px;
+    color: #f5f5f5;
+    text-align: left;
+  }
+}
+</style>
