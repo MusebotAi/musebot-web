@@ -73,7 +73,7 @@
     left: w(223);
     top: h(281);
     width: 618px;
-    height: 90px;
+    height: auto;
   }
 
   .desc {
