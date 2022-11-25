@@ -3,10 +3,20 @@
 <template>
   <div class="home">
     <img :src="$imgUrl('l_lb.png')" class="lb" alt="" />
-    <img :src="$imgUrl('about/arrow.png')" class="ldown" alt="" />
     <img :src="$imgUrl('feature/f1.png')" class="f1" alt="" />
     <img :src="$imgUrl('feature/f2.png')" class="f2" alt="" />
     <img :src="$imgUrl('feature/f3.png')" class="f3" alt="" />
+
+    <div class="rb ta">
+      <div class="flex-a-j">
+        <img :src="$imgUrl('feature/arrow.png')" class="ldown" alt="" />
+      </div>
+      <div class="icon-twitter flex-a-j mt30">
+        <div class="w53 h53 mt10">
+          <img :src="$imgUrl('twitter.png')" class="twitter" alt="" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,18 +27,16 @@
 @function h($p) {
   @return calc($p / 1024) * 100vh;
 }
-.left {
+.rb {
   position: absolute;
-  width: 170px;
-  height: 94px;
-  left: 0px;
-  top: 309px;
-
-  background: linear-gradient(
-    101.42deg,
-    rgba(98, 191, 54, 0.88) -24.47%,
-    rgba(98, 191, 54, 0) 90.91%
-  );
+  right: 55px;
+  bottom: h(93);
+}
+.icon-twitter {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #f5f5f5;
+  border-radius: 50%;
 }
 .lb {
   position: absolute;
@@ -45,11 +53,8 @@
   top: h(93);
 }
 .ldown {
-  position: absolute;
-  width: 39.93px;
-  height: 107.94px;
-  right: 55px;
-  bottom: h(93);
+  width: 35px;
+  height: auto;
 }
 .home {
   position: relative;
@@ -59,7 +64,7 @@
   background-repeat: no-repeat;
   background-position: w(0) h(0);
   background-size: auto;
-  
+
   .f1 {
     position: absolute;
     top: h(228);

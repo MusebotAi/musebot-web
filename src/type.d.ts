@@ -1,6 +1,9 @@
 export {}
 
 declare global {
+  interface Window {
+    jsonCallBack: any
+  }
 }
 
 // 自定义globalProperties类型申明

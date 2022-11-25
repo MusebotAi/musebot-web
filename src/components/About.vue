@@ -5,15 +5,15 @@
     <div class="left">
       <div class="title">Enter MuseBot</div>
       <div class="line"></div>
-      <router-link to="/started" class="btn">Get Started</router-link>
-    </div>
-    <div class="right">
-      MuseBot aims to build an AIGC NFTs platform that leverages creators by
-      integrating one-stop creation tools with a highly efficient marketplace.
-      Our visions are to eliminate the barriers of NFT creation for ordinary
-      people, accelerate the process of NFT creation and become the think tank
-      of NFT inspirations for professional creators, and provide trading and
-      cocreation ecosystems for artists and collectors.
+
+      <div class="text mt70">
+        MuseBot aims to build an AIGC NFTs platform that leverages creators by
+        integrating one-stop creation tools with a highly efficient marketplace.
+        Our visions are to eliminate the barriers of NFT creation for ordinary
+        people, accelerate the process of NFT creation and become the think tank
+        of NFT inspirations for professional creators, and provide trading and
+        cocreation ecosystems for artists and collectors.
+      </div>
     </div>
 
     <!-- <img :src="$imgUrl('l_tr.png')" class="tr" alt="" /> -->
@@ -48,7 +48,7 @@
   position: absolute;
   width: 39.93px;
   height: 107.94px;
-  right: w(468);
+  right: 316px;
   bottom: h(93);
 }
 .left_bg {
@@ -67,29 +67,30 @@
 .about {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
   height: 100%;
   width: 100%;
   background-image: url(@/assets/about/bg.png);
   background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: 500px auto;
+  background-position: right center;
+  background-size: auto auto;
   .left {
-    width: 315px;
-    margin-right: 202px;
-
+    margin-left: 90px;
     .title {
+      width: 532px;
       font-size: 64px;
       line-height: 76px;
       text-align: left;
     }
     .line {
-      width: 315px;
+      width: 532px;
       height: 9px;
       background: #ffffff;
       border-radius: 5px;
       margin: 24px 0 90px;
+    }
+    .text {
+      width: 532px;
     }
     .btn {
       width: 306px;
@@ -103,7 +104,7 @@
       text-transform: capitalize;
       color: #62bf36;
       cursor: pointer;
-      transition: all .3s;
+      transition: all 0.3s;
 
       &:hover {
         color: #f5f5f5;
