@@ -11,10 +11,10 @@ const createApi = 'https://svr.wombostudio.com/api/workPlatform/new'
 const loopupApi = 'https://svr.wombostudio.com/api/workPlatform/checkResult'
 // const successReportApi = 'https://svr.wombostudio.com/api/workPlatform/showDone'
 
-const mockImgs = [
-  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/8345eb4a9feee9b3c830b23683fe3342.png',
-  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/08a03fbecb929eec49bfd835a41b835c.png',
-  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d509026446f160b51019145e882b5d90.png'
+const mockImgs: any = [
+  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/8345eb4a9feee9b3c830b23683fe3342.png',
+  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/08a03fbecb929eec49bfd835a41b835c.png',
+  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d509026446f160b51019145e882b5d90.png'
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/dad97b124dc7ee73620313cdeab35bbf.png',
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d137971dadfb5cc6769d790ba1171e39.png',
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/1f137c1f0072c37c581489ac624fe79e.png'
@@ -36,7 +36,23 @@ const format = (s: string) => {
 const route = useRoute()
 const emit = defineEmits(['close'])
 type Step = 'form' | 'genimg' | 'doneimg' | 'metadata'
-const step = ref<Step>('doneimg')
+const step = ref<Step>('form')
+
+const onClose = () => {
+  emit('close')
+
+  let type = {
+    form: 'input',
+    genimg: 'select',
+    doneimg: 'select',
+    metadata: 'mintsetting'
+  }[step.value]
+
+  if (success.value) {
+    type = 'complete'
+  }
+  PopupCloseClickTrack(type)
+}
 
 let num = 0
 const percent = ref(0)
@@ -107,6 +123,9 @@ const submit = async () => {
     platformJobId: uuid + '_' + new Date().getTime(),
     keyword: value.value
   }
+
+  KeywordsSubmitClickTrack()
+
   $http
     .post(createApi, data)
     .then((res: any) => {
@@ -127,6 +146,8 @@ const submit = async () => {
 const checkedImg = ref()
 
 const download = async () => {
+  const index = imgs.value.indexOf(checkedImg.value) + 1 + ''
+  DownloadClickTrack(index)
   const url = checkedImg.value
   const a = document.createElement('a')
   let imgUrl = ''
@@ -164,6 +185,8 @@ const onConnect = async () => {
 const toMintNft = async () => {
   if (!checkedImg.value) return
   step.value = 'metadata'
+  const index = imgs.value.indexOf(checkedImg.value) + 1
+  MintAsNFTClickTrack(index)
   onConnect()
 }
 
@@ -171,6 +194,7 @@ const success = ref(false)
 const name = ref('')
 const minting = ref(false)
 const createNft = async () => {
+  MintClickTrack()
   minting.value = true
   try {
     if (!store.address) {
@@ -284,7 +308,7 @@ const createNft = async () => {
     <img
       :src="$imgUrl('close.png')"
       class="close"
-      @click="emit('close')"
+      @click="onClose"
       alt=""
     />
 

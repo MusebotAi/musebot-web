@@ -6,6 +6,7 @@ const format = (s: string) => {
 
 const addr = ref('')
 const onConnect = async () => {
+  walletClickTrack()
   console.log(
     '%c [ onConnect ]-9',
     'font-size:13px; background:pink; color:#bf2c9f;',
@@ -22,7 +23,12 @@ const onConnect = async () => {
     )
   }
 }
-const visible = ref(true)
+const visible = ref(false)
+
+const onClick = () => {
+  visible.value = true
+  getstartedClickTrack()
+}
 
 const scrollTo = (id: string) => {
   const el = document.getElementById(id) as HTMLHtmlElement
@@ -31,6 +37,10 @@ const scrollTo = (id: string) => {
     top
   })
 }
+
+onMounted(() => {
+  homeVisitTrack()
+})
 </script>
 <template>
   <div class="mmain">
@@ -67,9 +77,7 @@ const scrollTo = (id: string) => {
         Next-Gen NFTs Engine Powered by AIGC
       </div>
 
-      <div class="mt46 ml78 btn-started" @click="visible = true">
-        Get Started
-      </div>
+      <div class="mt46 ml78 btn-started" @click="onClick">Get Started</div>
 
       <div class="mt74 ml58 fs22 uline">Enter MuseBot</div>
       <div class="w291 mt24 ml57">
@@ -109,7 +117,12 @@ const scrollTo = (id: string) => {
       </div>
     </div>
 
-    <el-dialog v-model="visible" append-to-body :close-on-press-escape="false" :close-on-click-modal="false">
+    <el-dialog
+      v-model="visible"
+      append-to-body
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
+    >
       <CreateNftM @close="visible = false" />
     </el-dialog>
   </div>

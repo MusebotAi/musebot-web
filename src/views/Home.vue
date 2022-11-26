@@ -20,15 +20,21 @@
     </swiper>
 
     <div class="header">
-      <router-link to="/" class="logo">
+      <router-link to="/" class="logo" @click="navClickTrack('homepage')">
         <span>MuseBot</span>
         <span class="green">「Beta」</span>
       </router-link>
     </div>
     <div class="tabs">
-      <router-link class="link" to="/">HOMEPAGE</router-link>
-      <router-link class="link" to="/about">About</router-link>
-      <router-link class="link" to="/feature">Feature</router-link>
+      <router-link class="link" to="/" @click="navClickTrack('homepage')">
+        HOMEPAGE
+      </router-link>
+      <router-link class="link" to="/about" @click="navClickTrack('about')">
+        About
+      </router-link>
+      <router-link class="link" to="/feature" @click="navClickTrack('feature')">
+        Feature
+      </router-link>
     </div>
 
     <div
@@ -87,6 +93,8 @@ watch(
 onMounted(() => {
   const i = routes.indexOf(String(route.name))
   swiperIns.value.slideTo(i)
+
+  homeVisitTrack()
 })
 
 const format = (s: string) => {
@@ -94,6 +102,7 @@ const format = (s: string) => {
 }
 
 const onConnect = async () => {
+  walletClickTrack()
   try {
     const wallet = await connect(1)
     console.log(

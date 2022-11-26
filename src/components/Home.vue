@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const visible = ref(false)
+const onClick = () => {
+  visible.value = true
+  getstartedClickTrack()
+}
 </script>
 
 <template>
@@ -7,7 +11,7 @@ const visible = ref(false)
     <div class="content">
       <img :src="$imgUrl('musebot.png')" class="title" alt="" />
       <div class="desc mt40">Next-Gen NFTs Engine Powered by AIGC</div>
-      <div class="btn mt100 flex-a-j" @click="visible = true">Get Started</div>
+      <div class="btn mt100 flex-a-j" @click="onClick">Get Started</div>
       <div class="left"></div>
     </div>
     <img :src="$imgUrl('l_lb_s.png')" class="lb" alt="" />

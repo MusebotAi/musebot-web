@@ -3,7 +3,12 @@ export {}
 declare global {
   const $axios: typeof import('axios')['default']
   const $http: typeof import('@/utils/http')['default']
+  const DownloadClickTrack: typeof import('@/api')['DownloadClickTrack']
   const EffectScope: typeof import('vue')['EffectScope']
+  const KeywordsSubmitClickTrack: typeof import('@/api')['KeywordsSubmitClickTrack']
+  const MintAsNFTClickTrack: typeof import('@/api')['MintAsNFTClickTrack']
+  const MintClickTrack: typeof import('@/api')['MintClickTrack']
+  const PopupCloseClickTrack: typeof import('@/api')['PopupCloseClickTrack']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -30,7 +35,9 @@ declare global {
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getstartedClickTrack: typeof import('@/api')['getstartedClickTrack']
   const h: typeof import('vue')['h']
+  const homeVisitTrack: typeof import('@/api')['homeVisitTrack']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
   const isDefined: typeof import('@vueuse/core')['isDefined']
@@ -40,6 +47,8 @@ declare global {
   const isRef: typeof import('vue')['isRef']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
+  const musebotTrack: typeof import('@/api')['musebotTrack']
+  const navClickTrack: typeof import('@/api')['navClickTrack']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
@@ -251,6 +260,7 @@ declare global {
   const useWindowFocus: typeof import('@vueuse/core')['useWindowFocus']
   const useWindowScroll: typeof import('@vueuse/core')['useWindowScroll']
   const useWindowSize: typeof import('@vueuse/core')['useWindowSize']
+  const walletClickTrack: typeof import('@/api')['walletClickTrack']
   const watch: typeof import('vue')['watch']
   const watchArray: typeof import('@vueuse/core')['watchArray']
   const watchAtMost: typeof import('@vueuse/core')['watchAtMost']
@@ -272,7 +282,12 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly $axios: UnwrapRef<typeof import('axios')['default']>
     readonly $http: UnwrapRef<typeof import('@/utils/http')['default']>
+    readonly DownloadClickTrack: UnwrapRef<typeof import('@/api')['DownloadClickTrack']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly KeywordsSubmitClickTrack: UnwrapRef<typeof import('@/api')['KeywordsSubmitClickTrack']>
+    readonly MintAsNFTClickTrack: UnwrapRef<typeof import('@/api')['MintAsNFTClickTrack']>
+    readonly MintClickTrack: UnwrapRef<typeof import('@/api')['MintClickTrack']>
+    readonly PopupCloseClickTrack: UnwrapRef<typeof import('@/api')['PopupCloseClickTrack']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -299,7 +314,9 @@ declare module 'vue' {
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getstartedClickTrack: UnwrapRef<typeof import('@/api')['getstartedClickTrack']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly homeVisitTrack: UnwrapRef<typeof import('@/api')['homeVisitTrack']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isDefined: UnwrapRef<typeof import('@vueuse/core')['isDefined']>
@@ -309,6 +326,8 @@ declare module 'vue' {
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly musebotTrack: UnwrapRef<typeof import('@/api')['musebotTrack']>
+    readonly navClickTrack: UnwrapRef<typeof import('@/api')['navClickTrack']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
@@ -520,6 +539,7 @@ declare module 'vue' {
     readonly useWindowFocus: UnwrapRef<typeof import('@vueuse/core')['useWindowFocus']>
     readonly useWindowScroll: UnwrapRef<typeof import('@vueuse/core')['useWindowScroll']>
     readonly useWindowSize: UnwrapRef<typeof import('@vueuse/core')['useWindowSize']>
+    readonly walletClickTrack: UnwrapRef<typeof import('@/api')['walletClickTrack']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchArray: UnwrapRef<typeof import('@vueuse/core')['watchArray']>
     readonly watchAtMost: UnwrapRef<typeof import('@vueuse/core')['watchAtMost']>

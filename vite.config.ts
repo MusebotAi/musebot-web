@@ -15,10 +15,22 @@ export default defineConfig({
         'vue',
         'vue-router',
         '@vueuse/core',
-        
+
         {
           '@/utils/http': [['default', '$http']],
-          'axios': [['default', '$axios']],
+          axios: [['default', '$axios']],
+          '@/api': [
+            'musebotTrack',
+            'navClickTrack',
+            'homeVisitTrack',
+            'walletClickTrack',
+            'getstartedClickTrack',
+            'KeywordsSubmitClickTrack',
+            'PopupCloseClickTrack',
+            'MintAsNFTClickTrack',
+            'DownloadClickTrack',
+            'MintClickTrack'
+          ]
         }
       ],
       resolvers: [ElementPlusResolver()],
@@ -48,7 +60,7 @@ export default defineConfig({
     }
     // https://cn.vitejs.dev/config/#resolve-extensions
     // extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
-  },
+  }
   //fix:error:stdin>:7356:1: warning: "@charset" must be the first rule in the file
   // css: {
   //   preprocessorOptions: {
