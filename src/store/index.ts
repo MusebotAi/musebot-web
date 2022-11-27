@@ -33,7 +33,7 @@ $axios
 
 //
 $axios
-  .get('https://contractpub.musebot.ai/api/moduleaddress')
+  .get('https://musebot.ai/contract/api/moduleaddress')
   .then((res: any) => {
     console.log(
       '%c [ contractAddress res ]-28',
