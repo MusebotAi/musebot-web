@@ -63,7 +63,7 @@ const format = (s: string) => {
 const route = useRoute()
 const emit = defineEmits(['close'])
 type Step = 'form' | 'genimg' | 'doneimg' | 'metadata'
-const step = ref<Step>('doneimg')
+const step = ref<Step>('form')
 
 const onClose = () => {
   emit('close')

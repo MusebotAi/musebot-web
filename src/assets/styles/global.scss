@@ -220,4 +220,12 @@ body {
     }
     
   }
+
+
+  .el-image-viewer__close,
+  .el-image-viewer__next,
+  .el-image-viewer__prev,
+  .el-image-viewer__actions {
+    background-color: rgba($color: #000000, $alpha: 0.99);
+  }
 }
