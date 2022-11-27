@@ -1,9 +1,13 @@
 class Wallet {
-    static walletInstance = null;
+    static walletInstance: any = null;
+    accountAddr: string;
+    walletObj: null;
+    isConnect: boolean;
 
     constructor(){
         this.accountAddr = ""
         this.walletObj = null
+        this.isConnect = false;
     }
 
     static getWallet() {
@@ -17,6 +21,15 @@ class Wallet {
     async connect() {
         let ac = await this.walletObj.connect()
         this.accountAddr = ac.address
+        this.isConnect = true;
+    }
+
+    async disconnect() {
+        this.accountAddr = "";
+        await this.walletObj.disconnect()
+        this.walletObj = null;
+        Wallet.walletInstance = null;
+        this.isConnect = false;
     }
 
     onAccountChange(func) {
@@ -39,7 +52,10 @@ class Wallet {
           const pendingTransaction = await this.signAndSubmitTransaction(transaction);
           const txn = await aptosClient.waitForTransactionWithResult(pendingTransaction);
           return txn
-    };
+    }signAndSubmitTransaction(transaction: { function: any; arguments: any; type_arguments: never[]; }) {
+        throw new Error('Method not implemented.');
+    }
+;
 }
 
 class Petra extends Wallet {
@@ -106,7 +122,7 @@ const getList = () => {
  * @param {Number} idx  list返回信息里的index字段作为参数
  * @returns 
  */
-const connect = async (idx) => {
+const connect = async (idx: number) => {
     switch(idx){
         case 0:
             Wallet.walletInstance = new Petra()
@@ -119,5 +135,15 @@ const connect = async (idx) => {
     return Wallet.walletInstance
 }
 
-export { Wallet,getList,connect } 
+/**
+ * 断开钱包链接
+ */
+const disconnect = async () => {
+    if(Wallet.walletInstance) {
+        await Wallet.walletInstance.disconnect();
+    }
+    Wallet.walletInstance = null;
+}
+
+export { Wallet,getList,connect,disconnect } 
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const value = ref('')
 
 watch(
   () => route.name,
@@ -65,6 +66,12 @@ const onClose = () => {
   showVideo.value = false
   player?.stopVideo()
 }
+
+const submit = async() => {
+  if(!value.value) {
+
+  }
+}
 </script>
 
 <template>
@@ -92,6 +99,7 @@ const onClose = () => {
         alt=""
       />
     </div>
+    <!-- <CreateNft /> -->
 
     <div class="video-modal" v-show="showVideo">
       <div class="video-wrap">
@@ -103,21 +111,6 @@ const onClose = () => {
           v-show="videoReady"
         />
         <div class="" id="player"></div>
-        <!-- <video
-          class="video"
-          controls
-          preload="auto"
-          poster="//vjs.zencdn.net/v/oceans.png"
-        >
-          <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading
-            to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank">
-              supports HTML5 video
-            </a>
-          </p>
-        </video> -->
       </div>
     </div>
   </div>
@@ -191,8 +184,23 @@ const onClose = () => {
     font-size: 14px;
     line-height: 173.8%;
     text-align: center;
-    .text {
-      margin-top: 80px;
+    .ctitle {
+      font-size: 24px;
+    }
+    .input {
+      width: 361px;
+      border: 2px solid rgba(245, 245, 245, 0.88);
+      border-radius: 5px;
+      margin-top: 36px;
+    }
+
+    :deep(.el-textarea) {
+      .el-textarea__inner {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        color: #f5f5f5;
+      }
     }
     .demo {
       width: 361px;
@@ -249,12 +257,6 @@ const onClose = () => {
   background-repeat: no-repeat;
   background-position: w(627) h(229);
   background-size: 618px 596px;
-  // background-image: url(@/assets/l_lb.png), url(@/assets/l_tr.png),
-  //   url(@/assets/l_down.png), url(@/assets/bg_home.png);
-  // background-repeat: no-repeat;
-  // background-position: w(74) h(861), w(1205) h(93), w(1343) h(523),
-  //   w(627) h(229);
-  // background-size: w(252) h(70), w(161) h(66), w(40) h(408), 618px 596px;
 
   .title {
     position: absolute;

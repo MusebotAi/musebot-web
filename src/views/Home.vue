@@ -16,30 +16,41 @@
       <swiper-slide><Home /></swiper-slide>
       <swiper-slide><About /></swiper-slide>
       <swiper-slide><Feature /></swiper-slide>
-      <swiper-slide><Started /></swiper-slide>
+      <!-- <swiper-slide><Started /></swiper-slide> -->
     </swiper>
 
     <div class="header">
-      <router-link to="/" class="logo">
+      <router-link to="/" class="logo" @click="navClickTrack('homepage')">
         <span>MuseBot</span>
         <span class="green">「Beta」</span>
       </router-link>
     </div>
     <div class="tabs">
-      <router-link class="link" to="/about">About</router-link>
-      <router-link class="link" to="/feature">Feature</router-link>
-      <router-link class="link" to="/started">Get started</router-link>
+      <router-link class="link" to="/" @click="navClickTrack('homepage')">
+        HOMEPAGE
+      </router-link>
+      <router-link class="link" to="/about" @click="navClickTrack('about')">
+        About
+      </router-link>
+      <router-link class="link" to="/feature" @click="navClickTrack('feature')">
+        Feature
+      </router-link>
     </div>
 
-    <div class="connect-btn addr" v-if="addr" @click="addr = ''">
-      <span class="address">{{ format(addr) }}</span>
+    <div
+      class="connect-btn addr"
+      v-if="store.address"
+      @click="store.address = ''"
+    >
+      <span class="address">{{ format(store.address) }}</span>
       <span class="disconnect">Disconnect</span>
     </div>
     <div class="connect-btn" @click="onConnect" v-else>CONNECT WALLET</div>
   </div>
 </template>
 <script setup lang="ts">
-import { Wallet, getList, connect } from '../wallet'
+import store from '../store'
+import { Wallet, getList, connect } from '../utils/wallet'
 import Home from '@/components/Home.vue'
 import About from '@/components/About.vue'
 import Feature from '@/components/Feature.vue'
@@ -82,14 +93,16 @@ watch(
 onMounted(() => {
   const i = routes.indexOf(String(route.name))
   swiperIns.value.slideTo(i)
+
+  homeVisitTrack()
 })
 
 const format = (s: string) => {
   return s.substring(0, 8) + '...' + s.substring(s.length - 4)
 }
 
-const addr = ref('')
 const onConnect = async () => {
+  walletClickTrack()
   try {
     const wallet = await connect(1)
     console.log(
@@ -97,7 +110,7 @@ const onConnect = async () => {
       'font-size:13px; background:pink; color:#bf2c9f;',
       wallet
     )
-    addr.value = wallet.getAddress()
+    store.address = wallet.getAddress()
   } catch (error) {}
 }
 </script>
@@ -206,21 +219,6 @@ const onConnect = async () => {
   height: 100%;
   position: relative;
 }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  font-family: Nasalization, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #f5f5f5;
-  margin: 0;
-  padding: 0;
-  background-color: #111;
-}
-
 .swiper {
   width: 100%;
   height: 100%;
