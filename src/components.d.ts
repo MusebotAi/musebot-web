@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     About: typeof import('./components/About.vue')['default']
-    copy: typeof import('./components/CreateNftM.vue')['default']
     CreateNft: typeof import('./components/CreateNft.vue')['default']
     CreateNftM: typeof import('./components/CreateNftM.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -17,7 +16,6 @@ declare module '@vue/runtime-core' {
     ElImageViewer: typeof import('element-plus/es')['ElImageViewer']
     ElInput: typeof import('element-plus/es')['ElInput']
     Feature: typeof import('./components/Feature.vue')['default']
-    GmImage: typeof import('./components/MImage.vue')['default']
     Home: typeof import('./components/Home.vue')['default']
     MImage: typeof import('./components/MImage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
