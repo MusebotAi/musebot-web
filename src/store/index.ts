@@ -1,7 +1,8 @@
 import formurlencoded from 'form-urlencoded'
 const store = reactive({
   address: '',
-  access_token: ''
+  access_token: '',
+  contractAddress: ''
 })
 
 const config: any = {
@@ -27,12 +28,18 @@ $axios
     config
   )
   .then((res: any) => {
-    console.log(
-      '%c [ res ]-28',
-      'font-size:13px; background:pink; color:#bf2c9f;',
-      res
-    )
     store.access_token = res.data.access_token
   })
 
+//
+$axios
+  .get('http://contractpub.musebot.ai/api/moduleaddress')
+  .then((res: any) => {
+    console.log(
+      '%c [ contractAddress res ]-28',
+      'font-size:13px; background:pink; color:#bf2c9f;',
+      res
+    )
+    store.contractAddress = res.data
+  })
 export default store

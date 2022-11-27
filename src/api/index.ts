@@ -19,7 +19,7 @@ type EventType = {
 }
 export const musebotTrack = async (data: EventType) => {
   data.platformJobId = data.event + '_' + new Date().getTime()
-  return $http.post('http://stat.musebot.ai/api/eventTracking/push', data)
+  return $http.post('http://musebot.ai/api/eventTracking/push', data)
 }
 
 export const navClickTrack = (tab: string) => {

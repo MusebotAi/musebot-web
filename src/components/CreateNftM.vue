@@ -19,15 +19,6 @@ const mockImgs: any = [
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d137971dadfb5cc6769d790ba1171e39.png',
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/1f137c1f0072c37c581489ac624fe79e.png'
 ]
-const mintNft = new MintNFT(
-  NetType.TEST_NET,
-  '0x2898b76984e5cfc245f99762970e0c40fb0f7b29f82b50b8448ac64507591391'
-)
-console.log(
-  '%c [ mintNft ]-6',
-  'font-size:13px; background:pink; color:#bf2c9f;',
-  mintNft
-)
 
 const format = (s: string) => {
   return s.substring(0, 8) + '...' + s.substring(s.length - 4)
@@ -202,6 +193,7 @@ const createNft = async () => {
       store.address = wallet.getAddress()
     }
 
+    const mintNft = new MintNFT(NetType.MAIN_NET, store.contractAddress)
     const res = await mintNft.mintOne(name.value, checkedImg.value)
     console.log(
       '%c [ res ]-52',
@@ -305,12 +297,7 @@ const createNft = async () => {
       </div>
     </div>
 
-    <img
-      :src="$imgUrl('close.png')"
-      class="close"
-      @click="onClose"
-      alt=""
-    />
+    <img :src="$imgUrl('close.png')" class="close" @click="onClose" alt="" />
 
     <el-image-viewer
       v-if="showViewer"
@@ -438,8 +425,8 @@ const createNft = async () => {
 
   background: linear-gradient(
     122.16deg,
-    rgba(73, 73, 73, 0.442) 0.03%,
-    rgba(44, 44, 44, 0.65) 39.86%
+    #333,
+    #000
   );
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(9px);

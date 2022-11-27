@@ -10,14 +10,19 @@ const onClick = () => {
   <div class="home flex-a">
     <div class="content">
       <img :src="$imgUrl('musebot.png')" class="title" alt="" />
-      <div class="desc mt40">Next-Gen NFTs Engine Powered by AIGC</div>
-      <div class="btn mt100 flex-a-j" @click="onClick">Get Started</div>
+      <div class="desc">Next-Gen NFTs Engine Powered by AIGC</div>
+      <div class="btn flex-a-j" @click="onClick">Get Started</div>
       <div class="left"></div>
     </div>
     <img :src="$imgUrl('l_lb_s.png')" class="lb" alt="" />
     <img :src="$imgUrl('l_down.png')" class="ldown" alt="" />
 
-    <el-dialog v-model="visible" append-to-body :close-on-press-escape="false" :close-on-click-modal="false">
+    <el-dialog
+      v-model="visible"
+      append-to-body
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
+    >
       <CreateNft @close="visible = false" />
     </el-dialog>
   </div>
@@ -38,6 +43,7 @@ const onClick = () => {
   color: #62bf36;
   font-size: 36px;
   cursor: pointer;
+  margin-top: 6vh;
 
   &:hover {
     background-color: #62bf36;
@@ -51,7 +57,7 @@ const onClick = () => {
 .left {
   position: absolute;
   width: 170px;
-  height: 94px;
+  height: 14vh;
   left: 0px;
   top: 20px;
 
@@ -98,17 +104,17 @@ const onClick = () => {
   // background-size: w(252) h(70), w(161) h(66), w(40) h(408), 618px 596px;
 
   .title {
-    width: 618px;
-    height: auto;
+    width: auto;
+    height: 18vh;
   }
 
   .desc {
-    width: 642px;
-    height: 234px;
+    width: 60vh;
     font-weight: 400;
-    font-size: 64px;
+    font-size: 6.6vh;
     color: #f5f5f5;
     text-align: left;
+    margin-top: 2vh;
   }
 }
 </style>

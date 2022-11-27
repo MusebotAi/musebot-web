@@ -48,17 +48,13 @@ const mock: any = {
   timestamp: 1669359647412
 }
 const mockImgs: any = [
-  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/8345eb4a9feee9b3c830b23683fe3342.png',
-  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/08a03fbecb929eec49bfd835a41b835c.png',
-  // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d509026446f160b51019145e882b5d90.png'
+  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/8345eb4a9feee9b3c830b23683fe3342.png',
+  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/08a03fbecb929eec49bfd835a41b835c.png',
+  'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d509026446f160b51019145e882b5d90.png'
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/dad97b124dc7ee73620313cdeab35bbf.png',
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/d137971dadfb5cc6769d790ba1171e39.png',
   // 'https://aidraw-1311786629.cos.ap-nanjing.myqcloud.com/work/1f137c1f0072c37c581489ac624fe79e.png'
 ]
-const mintNft = new MintNFT(
-  NetType.TEST_NET,
-  '0x2898b76984e5cfc245f99762970e0c40fb0f7b29f82b50b8448ac64507591391'
-)
 
 const format = (s: string) => {
   return s.substring(0, 8) + '...' + s.substring(s.length - 4)
@@ -67,7 +63,7 @@ const format = (s: string) => {
 const route = useRoute()
 const emit = defineEmits(['close'])
 type Step = 'form' | 'genimg' | 'doneimg' | 'metadata'
-const step = ref<Step>('form')
+const step = ref<Step>('doneimg')
 
 const onClose = () => {
   emit('close')
@@ -232,6 +228,8 @@ const createNft = async () => {
       const wallet = await connect(1)
       store.address = wallet.getAddress()
     }
+
+    const mintNft = new MintNFT(NetType.MAIN_NET, store.contractAddress)
 
     const res = await mintNft.mintOne(name.value, checkedImg.value)
     console.log(
