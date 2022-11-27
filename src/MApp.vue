@@ -109,11 +109,11 @@ onMounted(() => {
       <div class="flex-a bottom">
         <img :src="$imgUrl('m/arrow2.png')" class="w59 mr25" alt="" />
 
-        <div class="icon-twitter flex-a-j">
+        <a href="https://twitter.com/MuseBot_AI" target="_blank" class="icon-twitter flex-a-j">
           <div class="w33 h33 mt4">
             <img :src="$imgUrl('twitter.png')" class="twitter" alt="" />
           </div>
-        </div>
+        </a>
       </div>
     </div>
 

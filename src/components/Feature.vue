@@ -11,11 +11,15 @@
       <div class="flex-a-j">
         <img :src="$imgUrl('feature/arrow.png')" class="ldown" alt="" />
       </div>
-      <div class="icon-twitter flex-a-j mt30">
+      <a
+        href="https://twitter.com/MuseBot_AI"
+        target="_blank"
+        class="icon-twitter flex-a-j mt30"
+      >
         <div class="w53 h53 mt10">
           <img :src="$imgUrl('twitter.png')" class="twitter" alt="" />
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
